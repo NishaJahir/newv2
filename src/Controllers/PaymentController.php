@@ -165,7 +165,6 @@ class PaymentController extends Controller
     public function processPayment() 
     {
         $requestData = $this->request->all();
-        $notificationMessage = $this->paymentHelper->getNovalnetStatusText($requestData);
         $birthday = sprintf('%4d-%02d-%02d',$requestData['nnBirthdayYear'],$requestData['nnBirthdayMonth'],$requestData['nnBirthdayDate']);
         $paymentRequestParameters = $this->paymentService->getPaymentRequestParameters($this->basketRepository->load(), $requestData['paymentKey']);
         if (empty($paymentRequestParameters['data']['customer']['first_name']) && empty($paymentRequestParameters['data']['customer']['last_name'])) {
