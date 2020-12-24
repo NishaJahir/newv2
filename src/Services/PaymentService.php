@@ -756,14 +756,13 @@ class PaymentService
                 if($this->paymentHelper->getPaymentKeyByMop($payment->mopId))
                 {
                     $orderId = (int) $payment->order['orderId'];
-                    $transactionDetails = $paymentService->getDatabaseValues($orderId);
-                    $getTransactionDetails = $transactionLog->getTransactionData('orderNo', $orderId);
+                    $transactionDetails = $this->getDatabaseValues($orderId);
+                    $getTransactionDetails = $this->transactionLogData->getTransactionData('orderNo', $orderId);
                     $totalCallbackAmount = 0;
                     foreach ($getTransactionDetails as $transactionDetail) {
                        $totalCallbackAmount += $transactionDetail->callbackAmount;
                     }
                     if(in_array($transactionStatus, ['PENDING', 'ON_HOLD', 'SUCCESS']) && ( ($transactionDetails['invoice_type'] == 'INVOICE' && ($transactionDetail->amount > $totalCallbackAmount)) || $transactionDetails['paymentName'] == 'novalnet_instalment_invoice') ) {
-                        $paymentHelper->logger('invoice comments called', $transactionDetail);
                         $bankDetails = $transactionDetails;
                     }
                 }
