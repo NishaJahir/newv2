@@ -16,6 +16,8 @@
 namespace Novalnet\Helper;
 
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodRepositoryContract;
+use Plenty\Modules\Payment\Models\Payment;
+use Plenty\Modules\Payment\Models\PaymentProperty;
 use Plenty\Modules\Payment\Contracts\PaymentRepositoryContract;
 use Plenty\Modules\Order\Contracts\OrderRepositoryContract;
 use Plenty\Modules\Payment\Contracts\PaymentOrderRelationRepositoryContract;
