@@ -126,7 +126,7 @@ class PaymentHelper
                                 CommentRepositoryContract $orderComment,
                                 ConfigRepository $configRepository,
                                 FrontendSessionStorageFactoryContract $sessionStorage,
-                                PaymentService $paymentService
+                                PaymentService $paymentService,
                                 TransactionService $tranactionService,
                                 CountryRepositoryContract $countryRepository,
                                 BasketRepositoryContract $basket
