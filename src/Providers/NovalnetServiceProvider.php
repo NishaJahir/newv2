@@ -170,7 +170,7 @@ class NovalnetServiceProvider extends ServiceProvider
                                     'paymentName'         => $paymentName,
                                     'instalmentNetAmount'  => $basket->basketAmount,
                                     'orderCurrency' => $basket->currency,
-                                    'instalmentCycles' => explode(',', $this->config->get('Novalnet.' . strtolower($paymentKey . '_cycles')))
+                                    'instalmentCycles' => explode(',', $config->get('Novalnet.' . strtolower($paymentKey . '_cycles')))
                                     ]);
                                 }
                             } else {
