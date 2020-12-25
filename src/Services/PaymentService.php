@@ -599,10 +599,6 @@ class PaymentService
     
     /**
      * Display notification message for success and failure transaction
-     *
-     * @param string $message
-     * @param string $type
-     * @param int $code
      */
     public function pushNotification($message, $type, $code = 0) 
     {
@@ -737,7 +733,7 @@ class PaymentService
      *
      * @param int $orderId
      *
-     * @return string|null
+     * @return array|null
      */
     public function formTransactionComments($orderId) 
     {
@@ -767,7 +763,7 @@ class PaymentService
                     }
                 }
             }
-            return $this->twig->render('Novalnet::NovalnetOrderHistory', ['bankDetails' => $bankDetails, 'transactionDetails' => $transactionDetails]);
+            return ['bankDetails' => $bankDetails, 'transactionDetails' => $transactionDetails]);
         }  
         return '';       
     }
