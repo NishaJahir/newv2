@@ -80,6 +80,7 @@
                "required":false,
                "label":"Config.testModeLabel",
                "options":{
+                  "tooltip":"Config.ccTestModeTooltip",
                   "defaultValue":false
                }
             },
@@ -88,7 +89,8 @@
                "required":false,
                "label":"Config.inlineFormLabel",
                "options":{
-                  "defaultValue":true
+                  "tooltip":"Config.inlineFormTooltip",
+                  "defaultValue":false
                }
             },
             "novalnet_cc_payment_name":{
@@ -115,12 +117,20 @@
                   "defaultValue":"images/novalnet_cc.png"
                }
             },
+            "novalnet_cc_3d_fraudcheck":{
+               "type":"checkBox",
+               "required":false,
+               "label":"Config.cc3dFraudcheckLabel",
+               "options":{
+                  "defaultValue":false
+               }
+            },
             "novalnet_cc_shopping_type":{
                "type":"checkBox",
                "required":false,
                "label":"Config.shoppingTypeLabel",
                "options":{
-                  "defaultValue":true
+                  "defaultValue":false
                }
             },
             "novalnet_cc_payment_action":{
@@ -309,7 +319,7 @@
                "required":false,
                "label":"Config.shoppingTypeLabel",
                "options":{
-                  "defaultValue":true
+                  "defaultValue":false
                }
             },
             "novalnet_sepa_payment_action":{
@@ -544,21 +554,22 @@
                   "defaultValue":""
                }
             },
-           "novalnet_instalment_invoice_allow_b2b_customer":{
-               "type":"checkBox",
+            "novalnet_instalment_allow_b2b_customer":{
+               "type":"selectBox",
                "required":false,
                "label":"Config.allowB2bCustomerLabel",
                "options":{
-                  "defaultValue":false
-               }
-            },
-            "novalnet_instalment_invoice_min_amount":{  
-               "type":"inputText",
-               "required":false,
-               "label":"Config.minAmountLabel",
-               "options":{  
-                  "tooltip":"Config.minAmountTooltip",
-                  "defaultValue":""
+                  "defaultValue":"true",
+                  "selectBoxValues":[
+                     {
+                        "value":"true",
+                        "caption":"Config.enableOption"
+                     },
+                     {
+                        "value":"false",
+                        "caption":"Config.disableOption"
+                     }
+                  ]
                }
             },
             "novalnet_instalment_invoice_cycles":{
@@ -683,7 +694,7 @@
                "required":false,
                "label":"Config.shoppingTypeLabel",
                "options":{
-                  "defaultValue":true
+                  "defaultValue":false
                }
             },
             "novalnet_paypal_payment_action":{
