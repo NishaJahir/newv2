@@ -16,7 +16,9 @@
 namespace Novalnet\Providers;
 
 use \Plenty\Modules\Authorization\Services\AuthHelper;
+use Plenty\Modules\Order\Models\Order;
 use Novalnet\Services\PaymentService;
+use Plenty\Plugin\Templates\Twig;
 
 /**
  * Class NovalnetOrderConfirmationDataProvider
@@ -29,12 +31,13 @@ class NovalnetOrderConfirmationDataProvider
      *
      * @param Arguments $arg
      */
-    public function call($arg)
+    public function call(Twig $twig, $arg)
     {
         $paymentService = pluginApp(PaymentService::class);
         $order = $arg[0];
         if (!empty ($order['id'])) {
-            $paymentService->formTransactionComments($order['id']);
+            $transactionComments = $paymentService->formTransactionComments($order['id']);
+            return $twig->render('Novalnet::NovalnetOrderHistory', ['bankDetails' => $transactionComments['bankDetails'], 'transactionDetails' => $transactionComments['$transactionDetails']]);
         }
     }
 }
