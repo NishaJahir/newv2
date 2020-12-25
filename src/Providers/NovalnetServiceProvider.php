@@ -202,7 +202,7 @@ class NovalnetServiceProvider extends ServiceProvider
         
         // Listen for the document generation event
         $eventDispatcher->listen(OrderPdfGenerationEvent::class,
-        function (OrderPdfGenerationEvent $event) use ($paymentHelper, $paymentService, $paymentRepository) {
+        function (OrderPdfGenerationEvent $event) use ($twig, $paymentHelper, $paymentService, $paymentRepository) {
             
         /** @var Order $order */ 
         $order = $event->getOrder();
@@ -219,6 +219,7 @@ class NovalnetServiceProvider extends ServiceProvider
                     if ($event->getDocType() == Document::INVOICE) {
                         $event->addOrderPdfGeneration($orderPdfGenerationModel); 
                     }
+                 return $twig->render('Novalnet::NovalnetOrderHistory', ['bankDetails' => $transactionComments['bankDetails'], 'transactionDetails' => $transactionComments['$transactionDetails']]);
                 }
             } catch (\Exception $e) {
                         $this->getLogger(__METHOD__)->error('Adding transaction comments on invoice PDF is failed for an order' . $order->id , $e);
